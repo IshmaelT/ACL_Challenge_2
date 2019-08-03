@@ -1,0 +1,111 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+        <variable
+            name="viewModel"
+            type="example.com.acl.travelmantics.DealViewModel" />
+    </data>
+
+    <android.support.constraint.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <android.support.design.widget.TextInputLayout
+            android:id="@+id/text_input_layout_deal_title"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/margin_horizontal_quarter"
+            android:layout_marginLeft="@dimen/margin_horizontal_quarter"
+            android:layout_marginTop="@dimen/margin_vertical_half"
+            android:layout_marginEnd="@dimen/margin_horizontal_quarter"
+            android:layout_marginRight="@dimen/margin_horizontal_quarter"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <android.support.design.widget.TextInputEditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="@string/deal_title"
+                android:text="@={viewModel.travelDeal.title}"/>
+        </android.support.design.widget.TextInputLayout>
+
+        <android.support.design.widget.TextInputLayout
+            android:id="@+id/text_input_layout_deal_description"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/margin_horizontal_quarter"
+            android:layout_marginLeft="@dimen/margin_horizontal_quarter"
+            android:layout_marginTop="@dimen/margin_vertical_half"
+            android:layout_marginEnd="@dimen/margin_horizontal_quarter"
+            android:layout_marginRight="@dimen/margin_horizontal_quarter"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/text_input_layout_deal_title">
+
+            <android.support.design.widget.TextInputEditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="@string/deal_description"
+                android:text="@={viewModel.travelDeal.description}"/>
+        </android.support.design.widget.TextInputLayout>
+
+        <android.support.design.widget.TextInputLayout
+            android:id="@+id/text_input_layout_deal_price"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/margin_horizontal_quarter"
+            android:layout_marginLeft="@dimen/margin_horizontal_quarter"
+            android:layout_marginTop="@dimen/margin_vertical_half"
+            android:layout_marginEnd="@dimen/margin_horizontal_quarter"
+            android:layout_marginRight="@dimen/margin_horizontal_quarter"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/text_input_layout_deal_description">
+
+            <android.support.design.widget.TextInputEditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="@string/deal_price"
+                android:inputType="number"
+                android:text="@={viewModel.travelDeal.price}"/>
+        </android.support.design.widget.TextInputLayout>
+
+        <Button
+            android:id="@+id/button_deal_select_image"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/margin_horizontal_quarter"
+            android:layout_marginLeft="@dimen/margin_horizontal_quarter"
+            android:layout_marginTop="@dimen/margin_vertical"
+            android:layout_marginEnd="@dimen/margin_horizontal_quarter"
+            android:layout_marginRight="@dimen/margin_horizontal_quarter"
+            android:text="@string/deal_select_image"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:onClick="@{viewModel::onSelectImagesClicked}"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/text_input_layout_deal_price" />
+
+        <ImageView
+            android:id="@+id/imageView"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_marginStart="@dimen/margin_horizontal_quarter"
+            android:layout_marginLeft="@dimen/margin_horizontal_quarter"
+            android:layout_marginTop="@dimen/margin_vertical"
+            android:layout_marginEnd="@dimen/margin_horizontal_quarter"
+            android:layout_marginRight="@dimen/margin_horizontal_quarter"
+            android:layout_marginBottom="@dimen/margin_vertical"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:scaleType="centerCrop"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/button_deal_select_image"
+            tools:ignore="ContentDescription"
+            tools:src="@tools:sample/avatars[0]" />
+
+    </android.support.constraint.ConstraintLayout>
+</layout>
