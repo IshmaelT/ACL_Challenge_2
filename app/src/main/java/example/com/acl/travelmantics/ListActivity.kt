@@ -4,22 +4,41 @@ import android.os.Bundle
 import android.view.Menu
 import android.view.MenuItem
 import androidx.appcompat.app.AppCompatActivity
-import androidx.databinding.BaseObservable
 import androidx.databinding.DataBindingUtil
-import com.google.firebase.storage.FirebaseStorage
-import com.google.firebase.storage.StorageReference
+import com.google.firebase.database.*
 import example.com.acl.travelmantics.databinding.ActivityListBinding
+import java.util.*
 
 class ListActivity : AppCompatActivity() {
 
+    private lateinit var database: DatabaseReference
     private var binding: ActivityListBinding? = null
-    private var viewModel: BaseObservable? = null
+    private var viewModel: ListViewModel? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = DataBindingUtil.setContentView(this, R.layout.activity_list)
+        viewModel = ListViewModel()
         binding?.setVariable(BR.viewModel, viewModel)
         binding?.executePendingBindings()
+
+        val travelDeals = ArrayList<TravelDeal>()
+
+        database = FirebaseDatabase.getInstance().getReference("deals")
+        database.addValueEventListener(object : ValueEventListener {
+
+            override fun onDataChange(dataSnapshot: DataSnapshot) {
+                dataSnapshot.children.forEach {
+                    val deal = it.getValue(TravelDeal::class.java)
+                    deal?.let { locDeal -> travelDeals.add(locDeal) }
+                }
+                viewModel?.travelDeals = travelDeals
+            }
+
+            override fun onCancelled(databaseError: DatabaseError) {
+
+            }
+        })
     }
 
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {

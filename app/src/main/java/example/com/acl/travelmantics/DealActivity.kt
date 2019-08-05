@@ -13,7 +13,6 @@ import com.google.firebase.storage.StorageReference
 import example.com.acl.travelmantics.databinding.ActivityDealBinding
 import java.util.*
 
-
 class DealActivity : AppCompatActivity(), DealView {
 
 
@@ -41,7 +40,7 @@ class DealActivity : AppCompatActivity(), DealView {
         return when (item?.itemId) {
             R.id.mail -> {
                 database = FirebaseDatabase.getInstance().getReference("deals")
-                database.setValue(viewModel?.travelDeal)
+                database.push().setValue(viewModel?.travelDeal)
                 true
             }
             else -> super.onOptionsItemSelected(item)
