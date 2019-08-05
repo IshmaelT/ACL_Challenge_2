@@ -6,13 +6,18 @@
     <data>
 
         <variable
+            name="listener"
+            type="example.com.acl.travelmantics.DealClickListener" />
+
+        <variable
             name="item"
             type="example.com.acl.travelmantics.TravelDeal" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        android:onClick="@{(v) -> listener.onDealClick(v,item)}">
 
         <ImageView
             android:id="@+id/imageView2"

@@ -1,5 +1,6 @@
 package example.com.acl.travelmantics
 
+import android.app.Activity
 import android.view.ViewGroup
 import androidx.databinding.BindingAdapter
 import androidx.recyclerview.widget.LinearLayoutManager

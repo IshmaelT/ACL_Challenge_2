@@ -1,14 +1,18 @@
 package example.com.acl.travelmantics
 
+import android.content.Intent
 import android.view.LayoutInflater
+import android.view.View
 import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
 import androidx.databinding.ViewDataBinding
 import androidx.recyclerview.widget.RecyclerView
 
+private const val EXTRA_TRAVEL_DEAL = "extra_travel_deal"
+
 class TravelDealsAdapter(
         var travelDeals: List<TravelDeal>? = null
-) : RecyclerView.Adapter<TravelDealsAdapter.ViewHolder>() {
+) : RecyclerView.Adapter<TravelDealsAdapter.ViewHolder>(), DealClickListener {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         val inflater = LayoutInflater.from(parent.context)
@@ -24,12 +28,26 @@ class TravelDealsAdapter(
         holder.bind(item)
     }
 
-    class ViewHolder(
+    inner class ViewHolder(
             private val binding: ViewDataBinding
     ) : RecyclerView.ViewHolder(binding.root) {
         fun bind(item: TravelDeal) {
             binding.setVariable(BR.item, item)
+            binding.setVariable(BR.listener, this@TravelDealsAdapter)
             binding.executePendingBindings()
         }
     }
+
+    override fun onDealClick(view: View, travelDeal: TravelDeal) {
+        val context = view.context
+        val intent = Intent().apply {
+            setClass(context, DealActivity::class.java)
+            putExtra(EXTRA_TRAVEL_DEAL, travelDeal)
+        }
+        context.startActivity(intent)
+    }
+}
+
+interface DealClickListener {
+    fun onDealClick(view: View, travelDeal: TravelDeal)
 }

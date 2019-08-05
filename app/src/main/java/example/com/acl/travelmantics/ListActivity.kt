@@ -28,6 +28,7 @@ class ListActivity : AppCompatActivity() {
         database.addValueEventListener(object : ValueEventListener {
 
             override fun onDataChange(dataSnapshot: DataSnapshot) {
+                viewModel?.travelDeals?.clear()
                 dataSnapshot.children.forEach {
                     val deal = it.getValue(TravelDeal::class.java)
                     deal?.let { locDeal -> travelDeals.add(locDeal) }

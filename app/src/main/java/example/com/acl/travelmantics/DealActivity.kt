@@ -13,20 +13,25 @@ import com.google.firebase.storage.StorageReference
 import example.com.acl.travelmantics.databinding.ActivityDealBinding
 import java.util.*
 
-class DealActivity : AppCompatActivity(), DealView {
+private const val EXTRA_TRAVEL_DEAL = "extra_travel_deal"
 
+class DealActivity : AppCompatActivity(), DealView {
 
     private lateinit var storageRef: StorageReference
     private var binding: ActivityDealBinding? = null
     private var viewModel: DealViewModel? = null
     private lateinit var database: DatabaseReference
-    private var travelDeal = TravelDeal()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
         binding = DataBindingUtil.setContentView(this, R.layout.activity_deal)
+
         viewModel = DealViewModel(this)
+        intent?.extras?.let {
+            viewModel?.travelDeal = it[EXTRA_TRAVEL_DEAL] as TravelDeal
+        }
+
         binding?.setVariable(BR.viewModel, viewModel)
         binding?.executePendingBindings()
     }
@@ -75,8 +80,8 @@ class DealActivity : AppCompatActivity(), DealView {
 
             }.addOnCompleteListener { task ->
                 if (task.isSuccessful) {
-                    travelDeal.url = task.result?.toString()
-                    viewModel?.travelDeal = travelDeal
+                    viewModel?.travelDeal?.url = task.result?.toString()
+                    viewModel?.travelDeal = viewModel?.travelDeal!!
                 }
                 viewModel?.loading = false
             }
