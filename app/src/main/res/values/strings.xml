@@ -6,4 +6,6 @@
     <string name="deal_select_image">Select Image</string>
     <string name="save">Save</string>
     <string name="logout">Logout</string>
+    <string name="delete_deal">Delete Deal</string>
+    <string name="add_deal">Add deal</string>
 </resources>

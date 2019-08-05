@@ -1,5 +1,6 @@
 package example.com.acl.travelmantics
 
+import android.content.Intent
 import android.os.Bundle
 import android.view.Menu
 import android.view.MenuItem
@@ -31,6 +32,7 @@ class ListActivity : AppCompatActivity() {
                 viewModel?.travelDeals?.clear()
                 dataSnapshot.children.forEach {
                     val deal = it.getValue(TravelDeal::class.java)
+                    deal?.id = it.key
                     deal?.let { locDeal -> travelDeals.add(locDeal) }
                 }
                 viewModel?.travelDeals = travelDeals
@@ -50,6 +52,10 @@ class ListActivity : AppCompatActivity() {
     override fun onOptionsItemSelected(item: MenuItem?): Boolean {
         return when (item?.itemId) {
             R.id.logout -> {
+                true
+            }
+            R.id.add_deal -> {
+                startActivity(Intent(this, DealActivity::class.java))
                 true
             }
             else -> super.onOptionsItemSelected(item)

@@ -34,6 +34,8 @@ class DealActivity : AppCompatActivity(), DealView {
 
         binding?.setVariable(BR.viewModel, viewModel)
         binding?.executePendingBindings()
+
+        supportActionBar?.setDisplayHomeAsUpEnabled(true)
     }
 
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {
@@ -44,8 +46,13 @@ class DealActivity : AppCompatActivity(), DealView {
     override fun onOptionsItemSelected(item: MenuItem?): Boolean {
         return when (item?.itemId) {
             R.id.mail -> {
+                val deal = viewModel?.travelDeal
                 database = FirebaseDatabase.getInstance().getReference("deals")
-                database.push().setValue(viewModel?.travelDeal)
+                if(deal?.id != null) {
+                    database.child(deal.id!!).setValue(deal)
+                } else {
+                    database.push().setValue(deal)
+                }
                 true
             }
             else -> super.onOptionsItemSelected(item)
