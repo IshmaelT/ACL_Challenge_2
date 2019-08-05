@@ -1,6 +1,6 @@
 package example.com.acl.travelmantics
 
-import android.databinding.BaseObservable
+import androidx.databinding.BaseObservable
 import kotlin.reflect.KProperty
 
 class BindableDelegate<in R : BaseObservable, T : Any>(
