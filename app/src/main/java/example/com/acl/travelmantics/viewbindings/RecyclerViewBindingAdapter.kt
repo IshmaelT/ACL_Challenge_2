@@ -1,9 +1,11 @@
-package example.com.acl.travelmantics
+package example.com.acl.travelmantics.viewbindings
 
 import android.view.ViewGroup
 import androidx.databinding.BindingAdapter
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import example.com.acl.travelmantics.model.TravelDeal
+import example.com.acl.travelmantics.deals.TravelDealsAdapter
 
 
 object RecyclerViewBindingAdapter {

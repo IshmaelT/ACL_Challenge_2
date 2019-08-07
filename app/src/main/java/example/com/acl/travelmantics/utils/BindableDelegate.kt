@@ -1,4 +1,4 @@
-package example.com.acl.travelmantics
+package example.com.acl.travelmantics.utils
 
 import androidx.databinding.BaseObservable
 import kotlin.reflect.KProperty

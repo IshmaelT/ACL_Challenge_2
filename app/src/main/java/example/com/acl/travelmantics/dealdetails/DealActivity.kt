@@ -1,4 +1,4 @@
-package example.com.acl.travelmantics
+package example.com.acl.travelmantics.dealdetails
 
 import android.content.Intent
 import android.os.Bundle
@@ -11,6 +11,9 @@ import com.google.firebase.database.DatabaseReference
 import com.google.firebase.database.FirebaseDatabase
 import com.google.firebase.storage.FirebaseStorage
 import com.google.firebase.storage.StorageReference
+import example.com.acl.travelmantics.BR
+import example.com.acl.travelmantics.R
+import example.com.acl.travelmantics.model.TravelDeal
 import example.com.acl.travelmantics.databinding.ActivityDealBinding
 import java.util.*
 

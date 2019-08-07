@@ -1,4 +1,4 @@
-package example.com.acl.travelmantics
+package example.com.acl.travelmantics.glide
 
 import com.bumptech.glide.annotation.GlideModule
 import com.bumptech.glide.module.AppGlideModule

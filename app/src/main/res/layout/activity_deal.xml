@@ -9,7 +9,7 @@
 
         <variable
             name="viewModel"
-            type="example.com.acl.travelmantics.DealViewModel" />
+            type="example.com.acl.travelmantics.dealdetails.DealViewModel" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout

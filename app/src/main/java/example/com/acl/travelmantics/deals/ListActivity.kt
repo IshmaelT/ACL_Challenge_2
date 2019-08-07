@@ -1,4 +1,4 @@
-package example.com.acl.travelmantics
+package example.com.acl.travelmantics.deals
 
 import android.content.Intent
 import android.os.Bundle
@@ -10,7 +10,11 @@ import com.firebase.ui.auth.AuthUI
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.FirebaseUser
 import com.google.firebase.database.*
+import example.com.acl.travelmantics.BR
+import example.com.acl.travelmantics.R
+import example.com.acl.travelmantics.model.TravelDeal
 import example.com.acl.travelmantics.databinding.ActivityListBinding
+import example.com.acl.travelmantics.dealdetails.DealActivity
 import java.util.*
 
 private const val REQUEST_CODE_SIGN_IN = -1

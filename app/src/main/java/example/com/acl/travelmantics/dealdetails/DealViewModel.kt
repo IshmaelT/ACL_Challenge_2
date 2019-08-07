@@ -1,8 +1,11 @@
-package example.com.acl.travelmantics
+package example.com.acl.travelmantics.dealdetails
 
 import androidx.databinding.BaseObservable
 import androidx.databinding.Bindable
 import android.view.View
+import example.com.acl.travelmantics.BR
+import example.com.acl.travelmantics.model.TravelDeal
+import example.com.acl.travelmantics.utils.bindable
 
 class DealViewModel(
         private var dealView: DealView

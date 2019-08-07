@@ -1,4 +1,4 @@
-package example.com.acl.travelmantics
+package example.com.acl.travelmantics.dealdetails
 
 interface DealView {
     fun onSelectImagesClicked()

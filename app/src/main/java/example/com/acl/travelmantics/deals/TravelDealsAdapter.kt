@@ -1,4 +1,4 @@
-package example.com.acl.travelmantics
+package example.com.acl.travelmantics.deals
 
 import android.content.Intent
 import android.view.LayoutInflater
@@ -7,6 +7,10 @@ import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
 import androidx.databinding.ViewDataBinding
 import androidx.recyclerview.widget.RecyclerView
+import example.com.acl.travelmantics.BR
+import example.com.acl.travelmantics.R
+import example.com.acl.travelmantics.dealdetails.DealActivity
+import example.com.acl.travelmantics.model.TravelDeal
 
 private const val EXTRA_TRAVEL_DEAL = "extra_travel_deal"
 

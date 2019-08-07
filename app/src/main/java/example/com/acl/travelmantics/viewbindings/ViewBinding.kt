@@ -1,10 +1,12 @@
-package example.com.acl.travelmantics
+package example.com.acl.travelmantics.viewbindings
 
 import android.view.View
 import android.view.View.GONE
 import android.view.View.VISIBLE
 import android.widget.ImageView
 import androidx.databinding.BindingAdapter
+import example.com.acl.travelmantics.R
+import example.com.acl.travelmantics.glide.GlideApp
 
 object ViewBinding {
     @JvmStatic
