@@ -10,7 +10,7 @@ object ViewBinding {
     @JvmStatic
     @BindingAdapter("app:url")
     fun setImageFromUrl(imageView: ImageView, url: String?) {
-        val locUrl = url ?: return
+        val locUrl = url ?: R.mipmap.ic_launcher
         GlideApp.with(imageView.context)
                 .load(locUrl)
                 .into(imageView)

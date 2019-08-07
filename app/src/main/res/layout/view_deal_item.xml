@@ -12,6 +12,7 @@
         <variable
             name="item"
             type="example.com.acl.travelmantics.TravelDeal" />
+
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout

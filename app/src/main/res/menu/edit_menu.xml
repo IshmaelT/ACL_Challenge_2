@@ -3,11 +3,6 @@
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <item
-        android:id="@+id/add_deal"
-        android:title="@string/add_deal"
-        app:showAsAction="never"/>
-
-    <item
         android:id="@+id/delete_deal"
         android:title="@string/delete_deal"
         app:showAsAction="never"/>

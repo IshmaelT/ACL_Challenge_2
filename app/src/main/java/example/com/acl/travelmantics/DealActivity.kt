@@ -4,6 +4,7 @@ import android.content.Intent
 import android.os.Bundle
 import android.view.Menu
 import android.view.MenuItem
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
 import com.google.firebase.database.DatabaseReference
@@ -45,13 +46,36 @@ class DealActivity : AppCompatActivity(), DealView {
 
     override fun onOptionsItemSelected(item: MenuItem?): Boolean {
         return when (item?.itemId) {
+            R.id.home -> {
+                finish()
+                true
+            }
+            R.id.delete_deal -> {
+                val deal = viewModel?.travelDeal
+                database = FirebaseDatabase.getInstance().getReference("deals")
+                database.child(deal?.id!!).removeValue().addOnCompleteListener {
+                    this@DealActivity.runOnUiThread {
+                        Toast.makeText(this@DealActivity, "Deleted", Toast.LENGTH_LONG).show()
+                        finish()
+                    }
+                }
+                true
+            }
             R.id.mail -> {
                 val deal = viewModel?.travelDeal
                 database = FirebaseDatabase.getInstance().getReference("deals")
-                if(deal?.id != null) {
-                    database.child(deal.id!!).setValue(deal)
+                if (deal?.id != null) {
+                    database.child(deal.id!!).setValue(deal).addOnCompleteListener {
+                        this@DealActivity.runOnUiThread {
+                            Toast.makeText(this@DealActivity, "Saved", Toast.LENGTH_LONG).show()
+                        }
+                    }
                 } else {
-                    database.push().setValue(deal)
+                    database.push().setValue(deal).addOnCompleteListener {
+                        this@DealActivity.runOnUiThread {
+                            Toast.makeText(this@DealActivity, "Saved", Toast.LENGTH_LONG).show()
+                        }
+                    }
                 }
                 true
             }

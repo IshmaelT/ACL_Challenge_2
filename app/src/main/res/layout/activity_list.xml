@@ -26,6 +26,7 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:entries="@{viewModel.travelDeals}"
             app:layout="@{recyclerViewList}"
+            app:isAdministrator="@{viewModel.administrator}"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 

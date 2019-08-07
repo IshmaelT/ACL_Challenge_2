@@ -11,7 +11,8 @@ import androidx.recyclerview.widget.RecyclerView
 private const val EXTRA_TRAVEL_DEAL = "extra_travel_deal"
 
 class TravelDealsAdapter(
-        var travelDeals: List<TravelDeal>? = null
+        var travelDeals: List<TravelDeal>? = null,
+        var isAdministrator: Boolean = false
 ) : RecyclerView.Adapter<TravelDealsAdapter.ViewHolder>(), DealClickListener {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
@@ -44,7 +45,9 @@ class TravelDealsAdapter(
             setClass(context, DealActivity::class.java)
             putExtra(EXTRA_TRAVEL_DEAL, travelDeal)
         }
-        context.startActivity(intent)
+        if (isAdministrator) {
+            context.startActivity(intent)
+        }
     }
 }
 
